@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:queue_number/src/queue_number_screen.dart';
 import 'package:queue_number/src/theme_manager/text_style_manager.dart';
 
 class PersonalInformation extends StatefulWidget {
@@ -405,7 +406,19 @@ class _PersonalInformationState extends State<PersonalInformation> {
                             );
                           },
                         );
-                      } else {}
+                      } else {
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return QueueNumberScreen(
+                                fullName: _fullName,
+                              );
+                            },
+                          ),
+                          (route) => false,
+                        );
+                      }
                     },
                     child: Text(
                       'Submit',
