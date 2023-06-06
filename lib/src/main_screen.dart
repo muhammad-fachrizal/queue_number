@@ -15,38 +15,36 @@ class MainScreen extends StatelessWidget {
           'Make Appointment',
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SafeArea(
-          child: GridView.extent(
-            crossAxisSpacing: 16,
-            mainAxisSpacing: 16,
-            maxCrossAxisExtent:
-                (screenWidth <= 600) ? screenWidth / 2 : screenWidth / 4,
-            children: const [
-              DoctorCardWidget(
-                doctorsType: '''General
+      body: SafeArea(
+        minimum: const EdgeInsets.all(8),
+        child: GridView.extent(
+          crossAxisSpacing: 16,
+          mainAxisSpacing: 16,
+          maxCrossAxisExtent:
+              (screenWidth <= 600) ? screenWidth / 2 : screenWidth / 4,
+          children: const [
+            DoctorCardWidget(
+              doctorsType: '''General
 Practitioner''',
-                fontSize: 18,
-                materialSymbol: Symbols.stethoscope,
-              ),
-              DoctorCardWidget(
-                doctorsType: 'Dentist',
-                fontSize: 28,
-                materialSymbol: Symbols.dentistry,
-              ),
-              DoctorCardWidget(
-                doctorsType: 'Neurology',
-                fontSize: 28,
-                materialSymbol: Symbols.neurology,
-              ),
-              DoctorCardWidget(
-                doctorsType: 'Pediatrics',
-                fontSize: 28,
-                materialSymbol: Symbols.pediatrics,
-              ),
-            ],
-          ),
+              fontSize: 18,
+              materialSymbol: Symbols.stethoscope,
+            ),
+            DoctorCardWidget(
+              doctorsType: 'Dentist',
+              fontSize: 28,
+              materialSymbol: Symbols.dentistry,
+            ),
+            DoctorCardWidget(
+              doctorsType: 'Neurology',
+              fontSize: 28,
+              materialSymbol: Symbols.neurology,
+            ),
+            DoctorCardWidget(
+              doctorsType: 'Pediatrics',
+              fontSize: 28,
+              materialSymbol: Symbols.pediatrics,
+            ),
+          ],
         ),
       ),
     );
