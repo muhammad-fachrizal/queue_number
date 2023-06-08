@@ -17,11 +17,10 @@ class MainScreen extends StatelessWidget {
       ),
       body: SafeArea(
         minimum: const EdgeInsets.all(8),
-        child: GridView.extent(
+        child: GridView.count(
           crossAxisSpacing: 16,
           mainAxisSpacing: 16,
-          maxCrossAxisExtent:
-              (screenWidth <= 600) ? screenWidth / 2 : screenWidth / 4,
+          crossAxisCount: (screenWidth <= 600) ? 2 : 4,
           children: const [
             DoctorCardWidget(
               doctorsType: '''General

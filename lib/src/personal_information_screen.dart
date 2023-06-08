@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:queue_number/src/common_widget/custom_text_field_widget.dart';
 import 'package:queue_number/src/queue_number_screen.dart';
 import 'package:queue_number/src/theme_manager/text_style_manager.dart';
 
@@ -53,51 +54,15 @@ class _PersonalInformationState extends State<PersonalInformation> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Full Name*',
-                style: getRubikTextStyle(),
-              ),
-              TextField(
+              CustomTextFieldwidget(
                 controller: _fullNameController,
-                decoration: InputDecoration(
-                  isDense: true,
-                  hintText: 'write your name',
-                  hintStyle: getRubikTextStyle(
-                    color: Colors.grey,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      10,
-                    ),
-                  ),
-                ),
+                labelName: 'Full Name*',
+                hintText: 'write your name',
               ),
-              const SizedBox(
-                height: 12,
-              ),
-              Text(
-                'Age*',
-                style: getRubikTextStyle(),
-              ),
-              TextField(
+              CustomTextFieldwidget(
                 controller: _ageController,
-                keyboardType: TextInputType.number,
-                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                decoration: InputDecoration(
-                  isDense: true,
-                  hintText: 'write your age',
-                  hintStyle: getRubikTextStyle(
-                    color: Colors.grey,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      10,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 12,
+                labelName: 'Age*',
+                hintText: 'write your age',
               ),
               Text(
                 'Sex*',
@@ -314,29 +279,11 @@ class _PersonalInformationState extends State<PersonalInformation> {
               const SizedBox(
                 height: 12,
               ),
-              Text(
-                'Medical Complaints*',
-                style: getRubikTextStyle(),
-              ),
-              TextField(
+              CustomTextFieldwidget(
                 controller: _medicalComplaintsController,
-                decoration: InputDecoration(
-                  isDense: true,
-                  hintText: 'write your medical complaints',
-                  hintStyle: getRubikTextStyle(
-                    color: Colors.grey,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      10,
-                    ),
-                  ),
-                ),
+                labelName: 'Medical Complaints*',
+                hintText: 'write your medical complaints',
                 maxLines: 5,
-                minLines: 1,
-              ),
-              const SizedBox(
-                height: 12,
               ),
               Align(
                 alignment: Alignment.bottomCenter,
