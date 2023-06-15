@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:queue_number/src/common_widget/custom_text_field_widget.dart';
-import 'package:queue_number/src/queue_number_screen.dart';
+import 'package:queue_number/src/personal_information_controller.dart';
 import 'package:queue_number/src/theme_manager/text_style_manager.dart';
 
 class PersonalInformation extends StatefulWidget {
@@ -13,6 +14,8 @@ class PersonalInformation extends StatefulWidget {
 }
 
 class _PersonalInformationState extends State<PersonalInformation> {
+  final PersonalInformationController personalInformationController =
+      Get.put(PersonalInformationController());
   final TextEditingController _fullNameController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
   final TextEditingController _medicalComplaintsController =
@@ -30,12 +33,14 @@ class _PersonalInformationState extends State<PersonalInformation> {
   String? _visitTime;
   bool _isOpen = false;
   String _medicalComplaints = '';
+  String _flgField = '';
 
   @override
   void dispose() {
     _fullNameController.dispose();
     _ageController.dispose();
     _medicalComplaintsController.dispose();
+    Get.delete<PersonalInformationController>();
     super.dispose();
   }
 
@@ -54,15 +59,36 @@ class _PersonalInformationState extends State<PersonalInformation> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Center(
+                child: Text(
+                  'Please fill all of the field!',
+                  style: getRubikTextStyle(
+                    fontSize: 14,
+                  ),
+                ),
+              ),
+              Obx(
+                () => LinearProgressIndicator(
+                  value: personalInformationController.count.value,
+                  semanticsLabel: 'Linear progress indicator',
+                ),
+              ),
+              const SizedBox(
+                height: 12,
+              ),
               CustomTextFieldwidget(
                 controller: _fullNameController,
                 labelName: 'Full Name*',
                 hintText: 'write your name',
+                flgField: 'flgFullName',
               ),
               CustomTextFieldwidget(
                 controller: _ageController,
                 labelName: 'Age*',
                 hintText: 'write your age',
+                keyboardType: TextInputType.number,
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                flgField: 'flgAge',
               ),
               Text(
                 'Sex*',
@@ -78,6 +104,8 @@ class _PersonalInformationState extends State<PersonalInformation> {
                       setState(
                         () {
                           _sex = value;
+                          _flgField = 'flgSex';
+                          personalInformationController.raiseFlag(_flgField);
                         },
                       );
                     },
@@ -96,6 +124,8 @@ class _PersonalInformationState extends State<PersonalInformation> {
                       setState(
                         () {
                           _sex = value;
+                          _flgField = 'flgSex';
+                          personalInformationController.raiseFlag(_flgField);
                         },
                       );
                     },
@@ -141,6 +171,8 @@ class _PersonalInformationState extends State<PersonalInformation> {
                   setState(
                     () {
                       _visitDate = value;
+                      _flgField = 'flgVisitDate';
+                      personalInformationController.raiseFlag(_flgField);
                     },
                   );
                 },
@@ -253,6 +285,7 @@ class _PersonalInformationState extends State<PersonalInformation> {
                 onChanged: (String? value) {
                   setState(
                     () {
+                      _flgField = 'flgSchedule';
                       _schedule = value;
                       List<String>? splitScheduleValue = _schedule?.split(' ');
                       _visitTime = splitScheduleValue?[0];
@@ -270,6 +303,9 @@ class _PersonalInformationState extends State<PersonalInformation> {
                             ),
                           ),
                         );
+                        personalInformationController.resetFlag(_flgField);
+                      } else {
+                        personalInformationController.raiseFlag(_flgField);
                       }
                     },
                   );
@@ -284,6 +320,7 @@ class _PersonalInformationState extends State<PersonalInformation> {
                 labelName: 'Medical Complaints*',
                 hintText: 'write your medical complaints',
                 maxLines: 5,
+                flgField: 'flgMedicalComplaints',
               ),
               Align(
                 alignment: Alignment.bottomCenter,
@@ -354,16 +391,10 @@ class _PersonalInformationState extends State<PersonalInformation> {
                           },
                         );
                       } else {
-                        Navigator.pushAndRemoveUntil(
+                        Navigator.pushReplacementNamed(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return QueueNumberScreen(
-                                fullName: _fullName,
-                              );
-                            },
-                          ),
-                          (route) => false,
+                          '/queueNumberScreen',
+                          arguments: _fullName,
                         );
                       }
                     },

@@ -1,7 +1,5 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:queue_number/src/main_screen.dart';
 import 'package:queue_number/src/theme_manager/text_style_manager.dart';
 
 class QueueNumberScreen extends StatelessWidget {
@@ -50,15 +48,7 @@ Your queue number is:''',
           )),
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
-            Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return const MainScreen();
-                },
-              ),
-              (route) => false,
-            );
+            Navigator.pop(context);
           },
           label: const Row(
             children: [

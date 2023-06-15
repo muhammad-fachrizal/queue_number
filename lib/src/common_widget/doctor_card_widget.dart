@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:queue_number/src/personal_information_screen.dart';
 import 'package:queue_number/src/theme_manager/text_style_manager.dart';
 
 class DoctorCardWidget extends StatelessWidget {
@@ -18,9 +17,7 @@ class DoctorCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return const PersonalInformation();
-        }));
+        Navigator.pushNamed(context, '/personalInformation');
       },
       child: Card(
         elevation: 12,
