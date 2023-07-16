@@ -1,4 +1,4 @@
-# Queue Number
+# Queue Number (Personal Project)
 
 A simple android application to make an appointment and get a queue number with 3 available screens: Make Appointment, Personal Information, Queue Number. Created using Flutter Framework to learn and practice about widget, input, navigation, and state management with GetX.
 
