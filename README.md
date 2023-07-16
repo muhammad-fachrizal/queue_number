@@ -3,7 +3,7 @@
 A simple android application to make an appointment and get a queue number with 3 available screens: Make Appointment, Personal Information, Queue Number. Created using Flutter Framework to learn and practice about widget, input, navigation, and state management with GetX.
 
 Created to complete the course of 
-["Belajar Membuat Aplikasi Flutter untuk Pemula"](https://www.dicoding.com/academies/159) from Dicoding.
+["Belajar Membuat Aplikasi Flutter untuk Pemula"](https://www.dicoding.com/certificates/6RPNWR66RP2M) from Dicoding.
 
 **Screenshot** <br/>
 - Make Appoinment <br/>
