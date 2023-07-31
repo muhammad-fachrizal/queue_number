@@ -26,7 +26,7 @@ class _PersonalInformationState extends State<PersonalInformation> {
   final String _today =
       'Today, ${DateTime.now().day}-${DateFormat("MMM").format(DateTime.now())}-${DateTime.now().year}';
   final String _tomorrow =
-      'Tomorrow, ${DateTime.now().day + 1}-${DateFormat("MMM").format(DateTime.now())}-${DateTime.now().year}';
+      'Tomorrow, ${DateFormat('dd-MMM-yyyy').format(DateTime.now().add(const Duration(days: 1)))}';
   String? _visitDate;
   String? _schedule;
   String? _scheduleStatus;
@@ -76,13 +76,13 @@ class _PersonalInformationState extends State<PersonalInformation> {
               const SizedBox(
                 height: 12,
               ),
-              CustomTextFieldwidget(
+              CustomTextFieldWidget(
                 controller: _fullNameController,
                 labelName: 'Full Name*',
                 hintText: 'write your name',
                 flgField: 'flgFullName',
               ),
-              CustomTextFieldwidget(
+              CustomTextFieldWidget(
                 controller: _ageController,
                 labelName: 'Age*',
                 hintText: 'write your age',
@@ -315,7 +315,7 @@ class _PersonalInformationState extends State<PersonalInformation> {
               const SizedBox(
                 height: 12,
               ),
-              CustomTextFieldwidget(
+              CustomTextFieldWidget(
                 controller: _medicalComplaintsController,
                 labelName: 'Medical Complaints*',
                 hintText: 'write your medical complaints',

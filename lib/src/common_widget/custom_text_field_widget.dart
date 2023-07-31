@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:queue_number/src/personal_information_controller.dart';
 import 'package:queue_number/src/theme_manager/text_style_manager.dart';
 
-class CustomTextFieldwidget extends StatefulWidget {
-  const CustomTextFieldwidget({
+class CustomTextFieldWidget extends StatefulWidget {
+  const CustomTextFieldWidget({
     super.key,
     required this.controller,
     required this.labelName,
@@ -25,10 +25,10 @@ class CustomTextFieldwidget extends StatefulWidget {
   final String flgField;
 
   @override
-  State<CustomTextFieldwidget> createState() => _CustomTextFieldwidgetState();
+  State<CustomTextFieldWidget> createState() => _CustomTextFieldWidgetState();
 }
 
-class _CustomTextFieldwidgetState extends State<CustomTextFieldwidget> {
+class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
   final PersonalInformationController personalInformationController =
       Get.put(PersonalInformationController());
 
